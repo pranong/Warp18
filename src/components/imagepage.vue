@@ -49,10 +49,6 @@
 							<i class="glyphicon glyphicon-picture"></i>
 							Photos of {{this.realname.name}} </a>
 						</li>
-            <h4>Contact us : </h4><a href="https://www.facebook.com/PranongOi" target="_blank" class="btn-social btn-facebook"><i class="fa fa-facebook"></i></a>
-            <a href="https://www.facebook.com/neativit.keawthong" target="_blank" class="btn-social btn-facebook"><i class="fa fa-facebook"></i></a>
-            <a href="https://www.facebook.com/Phanurut.Chamaree" target="_blank" class="btn-social btn-facebook"><i class="fa fa-facebook"></i></a>
-            <h4>Nut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nae&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Petch</h4>
             <li>
 
 						</li>
@@ -69,12 +65,16 @@
               <div v-if="authorized">
                 <!-- <div class="container"> -->
                 <div>
-                  <ul class="breadcrumb">
-                    <li class="completed"><a href="#" class="disabled"><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;&nbsp;&nbsp; Home </a></li>
-                    <li class="completed"><a href="#" class="disabled"><i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp;&nbsp;&nbsp; Album of {{realalbum}}</a></li>
-                    <li class="active"><a href="#" class="disabled"><i class="glyphicon glyphicon-picture"></i>&nbsp;&nbsp;&nbsp;&nbsp; Photos of {{this.realname.name}} </a></li>
-                  </ul>
+              <ul class="breadcrumb">
+                <li class="completed"><a href="#"><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp; Home</a></li>
+                <router-link to="/albumpage"><li class="completed"><a href="#" class="disabled">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-folder-open"></i>&nbsp;&nbsp; {{realalbum}}</a></router-link></li>
+                <li class="active"><a href="#" class="disabled"><i class="glyphicon glyphicon-picture"></i>&nbsp;&nbsp; {{this.realname.name}} </a></li>
+                <div class="navbar-right">
+                  <li v-if="authorized" @click="logout()" class="navbar-right"><a href="javascript:function() { return false; }"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp; Sign out</a></li>
+                  <li v-else="authorized" @click="login()" class="navbar-right"><a href="javascript:function() { return false; }"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp; Sign in</a></li>
                 </div>
+              </ul>
+            </div>
                 <!-- </div> -->
                 <h1>{{realalbum}}®</h1>
                 <h2>● {{this.realname.name}} ●</h2>

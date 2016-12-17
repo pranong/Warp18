@@ -34,10 +34,6 @@
                       <li class="active"><a href="#"><i class="glyphicon glyphicon-home"></i>Home </a></li>
                       <li><a href="#" class="disabled"><i class="glyphicon glyphicon-folder-open"></i>Album</a></li>
                       <li><a href="#" class="disabled"><i class="glyphicon glyphicon-picture"></i>Photos </a></li>
-                      <h4>Contact us : </h4><a href="https://www.facebook.com/PranongOi" target="_blank" class="btn-social btn-facebook"><i class="fa fa-facebook"></i></a>
-                      <a href="https://www.facebook.com/neativit.keawthong" target="_blank" class="btn-social btn-facebook"><i class="fa fa-facebook"></i></a>
-                      <a href="https://www.facebook.com/Phanurut.Chamaree" target="_blank" class="btn-social btn-facebook"><i class="fa fa-facebook"></i></a>
-                      <h4><a href="https://www.facebook.com/PranongOi" STYLE="text-decoration: none">Nut</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.facebook.com/neativit.keawthong" STYLE="text-decoration: none">Nae</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.facebook.com/Phanurut.Chamaree" STYLE="text-decoration: none">Petch</a></h4>
                     </ul>
                   </div>
                 </div>
@@ -47,10 +43,14 @@
           <div class="col-md-9">
             <div class="profile-content">
               <div>
-                <ul class="breadcrumb">
-                  <li class="active"><a href="#" class="disabled"><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;&nbsp;&nbsp; Home </a></li>
-                </ul>
-              </div>
+            <ol class="breadcrumb breadcrumb-arrow">
+                <li class="completed"><a href="#"><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp; Home</a></li>
+                <div class="navbar-right">
+                  <li v-if="authorized" @click="logout()" class="navbar-right"><a href="javascript:function() { return false; }"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp; Sign out</a></li>
+                  <li v-else="authorized" @click="login()" class="navbar-right"><a href="javascript:function() { return false; }"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp; Sign in</a></li>
+                </div>
+            </ol>
+          </div>
               <div class="row">
                 <h1>Select Page~</h1>
                 <div class="col-xs-6 col-md-3">
@@ -263,16 +263,14 @@ a.btn-social,
    pointer-events: none;
    cursor: default;
 }
-body {
-  background: #F1F3FA;
-}
 /* Profile container */
 .profile {
-  margin: -30px 0;
+  /*margin: -50px 0;*/
 }
 /* Profile sidebar */
 .profile-sidebar {
   padding: 20px 0 10px 0;
+  margin: -10px 0;
   background: #fff;
 }
 .profile-userpic img {
@@ -348,10 +346,10 @@ body {
 }
 /* Profile Content */
 .profile-content {
-  padding: 20px;
   background: #fff;
   min-height: 460px;
 }
+
 .breadcrumb {
     padding: 0px;
 	background: #D4D4D4;
@@ -367,14 +365,14 @@ body {
 }
 .breadcrumb li.active a {
 	background: brown;                   /* fallback color */
-	background: #ffc107 ;
+	background-color: #2494be;
 }
 .breadcrumb li.completed a {
 	background: brown;                   /* fallback color */
 	background: hsla(153, 57%, 51%, 1);
 }
 .breadcrumb li.active a:after {
-	border-left: 30px solid #ffc107 ;
+	border-left: 30px solid #2494be ;
 }
 .breadcrumb li.completed a:after {
 	border-left: 30px solid hsla(153, 57%, 51%, 1);
@@ -422,15 +420,26 @@ body {
 }
 .breadcrumb li a:hover { background: #ffc107  ; }
 .breadcrumb li a:hover:after { border-left-color: #ffc107   !important; }
+
 .box {
   background-color: #FFFFFF;
   margin-bottom: 20px;
   padding: 20px;
   border-radius: 5px;
 }
+.mynav {
+    /*position: fixed;*/
+    top: 0px;
+    width: 100%;
+}
+.mynavbutt {
+    /*position: fixed;*/
+    padding-top: 3px;
+    padding-left: 910px;
+}
 .Fixed {
     position: fixed;
-    top: 30px;
+    top: 70px;
     width: 700px;
 }
 h1 {
@@ -457,5 +466,9 @@ h5 {
 li {
   font-family: 'Raleway', sans-serif;
   font-size: 15px;
+}
+.navbar-right{
+    float: right !important;
+    margin-right: 10px;
 }
 </style>
